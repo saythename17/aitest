@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /images/private/
+Allow: /images/public/
+
+Sitemap: https://xio-ai-test.netlify.app/sitemap.xml

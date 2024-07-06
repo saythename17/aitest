@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://xio-ai-test.netlify.app/</loc>
+    <lastmod>2024-07-06T17:28:00+09:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- <url>
+    <loc>https://www-example-com.cdn.ampproject.org/c/s/www.example.com</loc>
+    <lastmod>2024-07-05T12:34:00+09:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.searchenginejournal.com/examples-contact-us-pages/378518/</loc>
+    <lastmod>2024-07-04T10:20:00+09:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url> -->
+</urlset>
