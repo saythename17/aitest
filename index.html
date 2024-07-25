@@ -430,16 +430,7 @@
     <script>
       var shareTitle
       var shareDes
-      var shareImage
-
-      // Get uploaded image data
-      var imageElement = document.getElementById('img-preview')
-      const canvas = document.createElement('canvas')
-      const context = canvas.getContext('2d')
-      canvas.width = imageElement.width
-      canvas.height = imageElement.height
-      context.drawImage(imageElement, 0, 0)
-      shareImage = canvas.toDataURL('image/jpeg') // Adjust format as needed
+      var shareImage = 'https://www.arealme.com/cover-images/harry-potter-house-sort.png'
 
       // predict can take in an image, video or canvas html element
       const prediction = await model.predict(imageElement, false)
