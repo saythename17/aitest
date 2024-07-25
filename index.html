@@ -428,19 +428,54 @@
     </script>
 
     <script>
+      var shareTitle
+      var shareDes
+      var shareImage
+
+      var imageElement = document.getElementById('img-preview')
+      // predict can take in an image, video or canvas html element
+      const prediction = await model.predict(imageElement, false)
+      prediction.sort((a, b) => b.probability - a.probability)
+
+      switch (prediction[0].className) {
+        case '그리핀도르':
+          shareTitle = '용감한 기사! 그리핀도르 기숙사에 배정되었어!'
+          shareDes = '내 첫인상은 용감하고 대담한 그리핀도르야!'
+          shareImage = 'https://i.namu.wiki/i/JKJZSOeIlzT350JlcborMZ94QJ0ufVXL8cu8569Dtx3PNCdqKtk_MjhqoCrOrQeKwb2OzopmWS3bvEJRdl1FBQ.webp'
+          break
+        case '후플푸프':
+          shareTitle = '곧은 마음 가진 후플푸프 기숙사의 일원이 됐어!'
+          shareDes = '내 첫인상은 성실하고 진실된 후플푸프야!'
+          shareImage = 'https://i.namu.wiki/i/b3TyfvZvm2S2jMUlgGvWbSn_fyIuyxWc6lEKxbMsSQsEBd29h7zaKyPrOobhu6l_yFcP37Oe-BjCOfvqERIN8A.webp'
+          break
+        case '레번클로':
+          shareTitle = '똑똑하고 지혜로운 레번클로 기숙사에 온 걸 환영해!'
+          shareDes = '내 첫인상은 현명하고 사려 깊은 레번클로야!'
+          shareImage = 'https://i.namu.wiki/i/s1OiOgrJYlUyfCPvslOKlYYKAux1fQUBj8LzvqBT7o-diFjI3y-3NCupO6usl7WppNga4_abd2xUpe19D494lw.webp'
+          break
+        case '슬리데린':
+          shareTitle = '재치 있는 슬리데린 기숙사의 일원이 됐어!'
+          shareDes = '내 첫인상은 재간꾼 기질이 있는 슬리데린이야!'
+          shareImage = 'https://i.namu.wiki/i/l4cjDKbHUIoVLvGvqhZ91oN0lbPBsrbYKYR8EFUHhLD7Rm6EDLJl5yqrjMl7cEYxApB5ZKqpsfm_y4vq_46jhA.webp'
+          break
+        default:
+          shareTitle = '안타깝게도 머글일 수도 있어!'
+          shareDes = '내 첫인상은 마력이 느껴지지 않는대!'
+          shareImage = 'https://www.arealme.com/cover-images/harry-potter-house-sort.png'
+          break
+      }
+
       Kakao.Share.createDefaultButton({
         container: '#kakaotalk-sharing-btn',
         objectType: 'feed',
         content: {
-          title: '(AI 테스트)내 첫인상으로 배정 받는 호그와트 기숙사!',
-          description:
-            '나는 슬리데린상? 그리핀도르상? 학습된 AI를 통해 첫인상으로 호그와트 기숙사 배정을 받아보자!',
-          imageUrl:
-            'https://www.arealme.com/cover-images/harry-potter-house-sort.png',
+          title: shareTitle,
+          description: shareDes,
+          imageUrl: shareImage,
           link: {
             // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
-            mobileWebUrl: 'https://mbti-face-rgnto.run.goorm.site',
-            webUrl: 'https://mbti-face-rgnto.run.goorm.site',
+            mobileWebUrl: 'https://xio-ai-test.netlify.app',
+            webUrl: 'https://xio-ai-test.netlify.app',
           },
         },
         social: {
