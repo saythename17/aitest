@@ -428,24 +428,15 @@
     </script>
 
     <script>
-      var shareTitle
-      var shareDes
-      var shareImage
-
-      const predict = async () => {
-        var imageElement = document.getElementById('img-preview')
-        // predict can take in an image, video or canvas html element
-        const prediction = await model.predict(imageElement, false)
-        prediction.sort((a, b) => b.probability - a.probability)
-
-        // const canvas = document.createElement('canvas')
-        // const context = canvas.getContext('2d')
-        // canvas.width = imageElement.width
-        // canvas.height = imageElement.height
-        // context.drawImage(imageElement, 0, 0)
-        // shareImage = canvas.toDataURL('image/jpeg')
-
-        switch (prediction[0].className) {
+      var shareTitle = '(AI 테스트)내 첫인상으로 배정 받는 호그와트 기숙사!'
+      var shareDes =
+        '나는 슬리데린상? 그리핀도르상? 학습된 AI를 통해 첫인상으로 호그와트 기숙사 배정을 받아보자!'
+      var shareImage =
+        'https://www.arealme.com/cover-images/harry-potter-house-sort.png'
+      labelContainer = document.getElementById('label-container')
+      labelContainer.addEventListener('change', function () {
+        console.log('change')
+        switch (predict) {
           case '그리핀도르':
             shareTitle = '용감한 기사! 그리핀도르 기숙사에 배정되었어!'
             shareDes = '내 첫인상은 용감하고 대담한 그리핀도르야!'
@@ -477,43 +468,43 @@
               'https://www.arealme.com/cover-images/harry-potter-house-sort.png'
             break
         }
+      })
 
-        Kakao.Share.createDefaultButton({
-          container: '#kakaotalk-sharing-btn',
-          objectType: 'feed',
-          content: {
-            title: shareTitle,
-            description: shareDes,
-            imageUrl: shareImage,
+      Kakao.Share.createDefaultButton({
+        container: '#kakaotalk-sharing-btn',
+        objectType: 'feed',
+        content: {
+          title: shareTitle,
+          description: shareDes,
+          imageUrl: shareImage,
+          link: {
+            // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
+            mobileWebUrl: 'https://xio-ai-test.netlify.app',
+            webUrl: 'https://xio-ai-test.netlify.app',
+          },
+        },
+        social: {
+          likeCount: 286,
+          commentCount: 45,
+          sharedCount: 845,
+        },
+        buttons: [
+          {
+            title: '웹으로 보기',
             link: {
-              // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
-              mobileWebUrl: 'https://xio-ai-test.netlify.app',
-              webUrl: 'https://xio-ai-test.netlify.app',
+              mobileWebUrl: 'https://developers.kakao.com',
+              webUrl: 'https://developers.kakao.com',
             },
           },
-          social: {
-            likeCount: 286,
-            commentCount: 45,
-            sharedCount: 845,
+          {
+            title: '앱으로 보기',
+            link: {
+              mobileWebUrl: 'https://developers.kakao.com',
+              webUrl: 'https://developers.kakao.com',
+            },
           },
-          buttons: [
-            {
-              title: '웹으로 보기',
-              link: {
-                mobileWebUrl: 'https://developers.kakao.com',
-                webUrl: 'https://developers.kakao.com',
-              },
-            },
-            {
-              title: '앱으로 보기',
-              link: {
-                mobileWebUrl: 'https://developers.kakao.com',
-                webUrl: 'https://developers.kakao.com',
-              },
-            },
-          ],
-        })
-      }
+        ],
+      })
     </script>
     <script>
       const sendText = '(AI 테스트)내 첫인상으로 배정 받는 호그와트 기숙사!' // 공유할 텍스트
